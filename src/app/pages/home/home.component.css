@@ -1,0 +1,191 @@
+
+/* Estilos generales para la sección */
+section {
+  padding: 60px 20px;
+  background: linear-gradient(to bottom right, #bb7575, #a8ddf1); 
+}
+
+/* Contenedor principal de la sección */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Título principal de la sección */
+.hero-title {
+  font-size: 3rem; 
+  color: #2c3e50; 
+  font-weight: 700; 
+  margin-bottom: 20px;
+  line-height: 1.2; 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
+}
+
+/* Imagen de la sección */
+.hero-image {
+  max-width: 80%; 
+  height: auto;
+  border-radius: 12px; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+  margin: 20px 0; 
+}
+
+/* Subtítulo de la sección */
+.hero-subtitle {
+  font-size: 1.4rem; 
+  color: #34495e; 
+  line-height: 1.8; 
+  max-width: 80%; 
+  margin: 0 auto; 
+  padding: 0 10px; 
+  font-weight: 400; 
+  text-align: center; 
+}
+
+/* Línea decorativa sobre el subtítulo */
+.hero-subtitle::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #3498db; 
+  margin: 0 auto 20px; 
+  border-radius: 2px; 
+}
+
+
+
+/* home.component.css */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  .home-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .home-container img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .home-container h2 {
+    font-size: 1.3rem;
+    color: #030303;
+    text-align: center;
+  }
+  
+  .btn-primary {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10; 
+  }
+  
+
+  
+
+/* Estilo para centrar el carrusel */
+#carouselExampleRide {
+  position: relative;
+  width: 90%;
+  margin: 0 auto; 
+}
+
+/* Estilo para que todas las imágenes tengan el mismo tamaño */
+.carousel-inner {
+  width: 100%;
+  height: 1000px; 
+}
+
+.carousel-item img {
+  width: 200%;
+  height: 200%;
+  object-fit: cover; 
+}
+
+
+/* Estilo general para el contenedor del span */
+.product-description-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 8px; 
+  color: #fff; 
+  font-size: 1rem; 
+  text-align: center;
+}
+
+/* Estilo para cada item de la descripción */
+.description-item {
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.7); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 600; 
+}
+
+/* Cambiar color de fondo según el caso */
+.description-item:nth-of-type(1) {
+  background-color: #3498db; 
+}
+
+.description-item:nth-of-type(2) {
+  background-color: #2ecc71; 
+}
+
+.description-item:nth-of-type(3) {
+  background-color: #e74c3c; 
+}
+
+.description-item:nth-of-type(4) {
+  background-color: #95a5a6; 
+}
+
+/* Estilo para mejorar la legibilidad */
+.description-item {
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .product-description-container {
+    padding: 10px;
+  }
+  
+  .description-item {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+

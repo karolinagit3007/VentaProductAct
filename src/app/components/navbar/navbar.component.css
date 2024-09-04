@@ -1,0 +1,53 @@
+/* Estilos generales para la barra de navegación */
+.navbar.navbar-expand-lg.bg-body-tertiary {
+  background-color: #000000 !important; 
+  padding: 15px 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar-brand {
+  color: #ffffff !important; 
+  font-size: 24px; 
+  font-weight: bold; 
+}
+
+.navbar-brand:hover {
+  color: #d3d3d3 !important; 
+  text-decoration: none; 
+}
+
+.navbar-toggler {
+  border: none; 
+}
+
+.navbar-toggler-icon {
+  background-image: url('https://fusionmoda.es/wp-content/uploads/que-marca-de-ropa-es-un-circulo-1.webp'); 
+}
+
+.nav-link {
+  color: #ffffff !important; 
+  font-size: 18px; 
+  font-weight: bold; 
+  margin-right: 15px; 
+}
+
+.nav-link:hover {
+  color: #d3d3d3 !important; 
+}
+
+.nav-link.active {
+  color: #f8f9fa !important; 
+  font-weight: bold; 
+  border-bottom: 2px solid #ffffff; 
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #000000 !important; 
+    padding: 10px; 
+  }
+}
+
+.container-fluid {
+  max-width: 1200px; 
+}

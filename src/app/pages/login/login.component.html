@@ -1,0 +1,65 @@
+ 
+
+<div class="container-fluid text-center">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg" style="width: 100%; max-width: 400px;">
+      <div class="card-body">
+        <h1 class="text-center text-primary mb-4">Inicio de Sesión</h1>
+        <form [formGroup]="form">
+          <div class="mb-3">
+            <label for="username" class="form-label"><strong>Correo</strong></label>
+            <input
+              type="email"
+              class="form-control"
+              id="username"
+              style="border-width: 2px; border-color: #ced4da;"
+              formControlName="email"
+              required
+              placeholder="Ingrese su correo electrónico"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label"><strong>Contraseña</strong></label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              style="border-width: 2px; border-color: #ced4da;"
+              formControlName="password"
+              required
+              placeholder="Ingrese su contraseña"
+            />
+          </div>
+          <div class="text-center">
+            <button
+              class="btn btn-outline-primary mx-2"
+              type="button"
+              (click)="onClickRegister()"
+              style="background-color: #e1f5fe; color: #000; border-color: #000;"
+            >
+              Registrarme
+            </button>
+            <button
+              class="btn btn-primary mx-2"
+              type="button"
+              (click)="onClickLogin()"
+              style="background-color: #007bff; border-color: #007bff;"
+            >
+              Iniciar Sesión
+            </button>
+            <br><br>
+            <button
+              class="btn btn-danger mx-2"
+              type="button"
+              (click)="onClickLoginGoogle()"
+              style="background-color: #dc3545; border-color: #dc3545;"
+            >
+              Iniciar Sesión con Google
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

@@ -1,0 +1,24 @@
+[
+  {
+    "id":1,
+    "name":"Blusas- camisas",
+    "description":1,
+    "price": 100,
+    "image":"imagenes/productoUno.png"
+   
+  },
+  {
+    "id":2,
+    "name":"Pantalones",
+    "description":2,
+    "price": 150,
+    "image":"imagenes/productoDos.jpg"
+  },
+  {
+    "id":3,
+    "name":"Vestidos",
+    "description":3,
+    "price": 200,
+    "image":"imagenes/productoTres.png" 
+  }
+]

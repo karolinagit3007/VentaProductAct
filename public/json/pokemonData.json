@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "nombre": "Pikachu",
+      "peso": 6.0,
+      "imagen": "imagenes/pikachu.png",
+      "tipo": 1
+    },
+    {
+      "id": 2,
+      "nombre": "Bulbasaur",
+      "peso": 6.9,
+      "imagen": "imagenes/bulbasaur.png",
+      "tipo": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Charmander",
+      "peso": 8.5,
+      "imagen": "imagenes/charmander.png",
+      "tipo": 3
+    }
+  ]

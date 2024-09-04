@@ -1,0 +1,96 @@
+
+
+<section>
+  <div class="hero-section">
+    <h1 class="hero-title">Impulsando el Futuro!!</h1>
+    <img [src]="imagenes[0]" alt="Oferta Número Uno" class="hero-image" />
+    <h2 class="hero-subtitle">
+      Comprometidos con la excelencia y la innovación, trabajamos para<br> ofrecer
+      soluciones efectivas que transformen y optimicen tu experiencia.<br> Nuestro
+      equipo se dedica a superar expectativas y a establecer nuevos <br>estándares en
+      cada proyecto.
+    </h2>
+  </div>
+</section>
+<br><br>
+<hr>
+<div
+  id="carouselExampleRide"
+  class="carousel slide"
+  data-bs-ride="carousel"
+  style="width: 90%; margin: 0 auto">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img [src]="imagenes[1]" class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item">
+      <img [src]="imagenes[2]" class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item">
+      <img [src]="imagenes[3]" class="d-block w-100" alt="..." />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleRide"
+    data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleRide"
+    data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<hr>
+
+
+
+
+
+
+<section>
+  <div
+  id="carouselExampleRide"
+  class="carousel slide"
+  data-bs-ride="carousel"
+  style="width: 90%; margin: 0 auto">
+  <div class="carousel-inner">
+    <div *ngFor="let product of products" 
+     [class]="product.id==1? 'carousel-item active' :'carousel-item '">
+      <img [src]="product.image"  class="d-block w-100" [alt]="product.name" />
+      <h5 *ngIf="product.price > 150; else elseTemplete">Es de alta demanda</h5>
+      <ng-template #elseTemplete><h5>Es de baja demanda</h5></ng-template>
+      <span class="product-description-container" [ngSwitch]="product.description">
+        <div *ngSwitchCase="1">Blusas de varios colores</div>
+        <div *ngSwitchCase="2">Pantalones de alta calidad</div>
+        <div *ngSwitchCase="3">Vestidos para varias estaciones</div>
+        <div *ngSwitchDefault>Es desconocido</div>
+      </span>
+      <a [routerLink]="['/pagina-inexistente']" class="btn btn-primary" style="position: absolute; bottom: 20px; left: 20px;">Ver Producto</a>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleRide"
+    data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleRide"
+    data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</section>
+

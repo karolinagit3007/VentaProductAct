@@ -1,0 +1,140 @@
+/* Fuente de Google */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Estilos generales */
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: linear-gradient(to right, #69b7ca, #f0d1d1); 
+}
+
+.section-title {
+    font-family: 'Roboto', sans-serif;
+    color: #2c3e50; 
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 2.5rem; 
+}
+
+.section-subtitle {
+    font-family: 'Roboto', sans-serif;
+    color: #7f8c8d; 
+    font-weight: 400;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+}
+
+.highlight-card {
+    background: #ffffff;
+    border-radius: 10px; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+    padding: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.highlight-card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3); 
+}
+
+.highlight-header {
+    background: linear-gradient(to right, #569be0, #e4766a); 
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem; 
+    margin: 0;
+}
+
+.highlight-text {
+    font-family: 'Roboto', sans-serif;
+    color: #34495e; 
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.history::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background: #040505; 
+}
+
+.mission::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background: #e74c3c; 
+}
+
+.vision::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background: #f39c12; 
+}
+
+.team-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(46, 45, 45, 0.2);
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3); 
+}
+
+.team-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 5px solid #e74c3c; 
+}
+
+.team-body {
+    padding: 20px;
+}
+
+.team-name {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #030303; 
+    margin-bottom: 10px;
+}
+
+.team-role {
+    font-family: 'Roboto', sans-serif;
+    color: #7f8c8d; 
+    margin-bottom: 15px;
+}
+
+.team-description {
+    font-family: 'Roboto', sans-serif;
+    color: #020202; 
+    line-height: 1.6;
+}
