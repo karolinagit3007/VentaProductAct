@@ -1,8 +1,9 @@
 import {
-  getDOM
-} from "./chunk-BT7CLWMM.js";
-import {
+  BehaviorSubject,
+  CSP_NONCE,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Component,
   Directive,
   ElementRef,
   EventEmitter,
@@ -13,47 +14,69 @@ import {
   Injector,
   Input,
   NgModule,
+  NgZone,
+  NzIconDirective,
+  NzIconModule,
+  Observable,
   Optional,
   Output,
+  Platform,
   Renderer2,
+  ReplaySubject,
   RuntimeError,
   Self,
   SkipSelf,
+  Subject,
   Version,
+  ViewEncapsulation$1,
   booleanAttribute,
+  coerceArray,
+  combineLatest,
   computed,
+  concat,
+  debounceTime,
+  forkJoin,
   forwardRef,
+  from,
+  getDOM,
   inject,
   isPromise,
   isSubscribable,
+  map,
   setClassMetadata,
   signal,
+  skip,
+  startWith,
+  take,
+  takeUntil,
   untracked,
   ɵɵInheritDefinitionFeature,
   ɵɵNgOnChangesFeature,
   ɵɵProvidersFeature,
+  ɵɵStandaloneFeature,
   ɵɵattribute,
   ɵɵclassProp,
+  ɵɵconditional,
+  ɵɵdefineComponent,
   ɵɵdefineDirective,
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵdirectiveInject,
+  ɵɵelement,
   ɵɵgetInheritedFactory,
-  ɵɵlistener
-} from "./chunk-MOBVJNQC.js";
-import {
-  Subject,
-  forkJoin,
-  from,
-  map
-} from "./chunk-JFJKQWN4.js";
+  ɵɵinject,
+  ɵɵlistener,
+  ɵɵnextContext,
+  ɵɵproperty,
+  ɵɵtemplate
+} from "./chunk-WIXNCW5V.js";
 import {
   __spreadProps,
   __spreadValues
 } from "./chunk-5K356HEJ.js";
 
-// node_modules/@angular/forms/fesm2022/forms.mjs
+// ../../../../../node_modules/@angular/forms/fesm2022/forms.mjs
 var _BaseControlValueAccessor = class _BaseControlValueAccessor {
   constructor(_renderer, _elementRef) {
     this._renderer = _renderer;
@@ -280,282 +303,6 @@ function hasValidLength(value) {
 var NG_VALIDATORS = new InjectionToken(ngDevMode ? "NgValidators" : "");
 var NG_ASYNC_VALIDATORS = new InjectionToken(ngDevMode ? "NgAsyncValidators" : "");
 var EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-var Validators = class {
-  /**
-   * @description
-   * Validator that requires the control's value to be greater than or equal to the provided number.
-   *
-   * @usageNotes
-   *
-   * ### Validate against a minimum of 3
-   *
-   * ```typescript
-   * const control = new FormControl(2, Validators.min(3));
-   *
-   * console.log(control.errors); // {min: {min: 3, actual: 2}}
-   * ```
-   *
-   * @returns A validator function that returns an error map with the
-   * `min` property if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static min(min) {
-    return minValidator(min);
-  }
-  /**
-   * @description
-   * Validator that requires the control's value to be less than or equal to the provided number.
-   *
-   * @usageNotes
-   *
-   * ### Validate against a maximum of 15
-   *
-   * ```typescript
-   * const control = new FormControl(16, Validators.max(15));
-   *
-   * console.log(control.errors); // {max: {max: 15, actual: 16}}
-   * ```
-   *
-   * @returns A validator function that returns an error map with the
-   * `max` property if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static max(max) {
-    return maxValidator(max);
-  }
-  /**
-   * @description
-   * Validator that requires the control have a non-empty value.
-   *
-   * @usageNotes
-   *
-   * ### Validate that the field is non-empty
-   *
-   * ```typescript
-   * const control = new FormControl('', Validators.required);
-   *
-   * console.log(control.errors); // {required: true}
-   * ```
-   *
-   * @returns An error map with the `required` property
-   * if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static required(control) {
-    return requiredValidator(control);
-  }
-  /**
-   * @description
-   * Validator that requires the control's value be true. This validator is commonly
-   * used for required checkboxes.
-   *
-   * @usageNotes
-   *
-   * ### Validate that the field value is true
-   *
-   * ```typescript
-   * const control = new FormControl('some value', Validators.requiredTrue);
-   *
-   * console.log(control.errors); // {required: true}
-   * ```
-   *
-   * @returns An error map that contains the `required` property
-   * set to `true` if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static requiredTrue(control) {
-    return requiredTrueValidator(control);
-  }
-  /**
-   * @description
-   * Validator that requires the control's value pass an email validation test.
-   *
-   * Tests the value using a [regular
-   * expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
-   * pattern suitable for common use cases. The pattern is based on the definition of a valid email
-   * address in the [WHATWG HTML
-   * specification](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address) with
-   * some enhancements to incorporate more RFC rules (such as rules related to domain names and the
-   * lengths of different parts of the address).
-   *
-   * The differences from the WHATWG version include:
-   * - Disallow `local-part` (the part before the `@` symbol) to begin or end with a period (`.`).
-   * - Disallow `local-part` to be longer than 64 characters.
-   * - Disallow the whole address to be longer than 254 characters.
-   *
-   * If this pattern does not satisfy your business needs, you can use `Validators.pattern()` to
-   * validate the value against a different pattern.
-   *
-   * @usageNotes
-   *
-   * ### Validate that the field matches a valid email pattern
-   *
-   * ```typescript
-   * const control = new FormControl('bad@', Validators.email);
-   *
-   * console.log(control.errors); // {email: true}
-   * ```
-   *
-   * @returns An error map with the `email` property
-   * if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static email(control) {
-    return emailValidator(control);
-  }
-  /**
-   * @description
-   * Validator that requires the length of the control's value to be greater than or equal
-   * to the provided minimum length. This validator is also provided by default if you use the
-   * the HTML5 `minlength` attribute. Note that the `minLength` validator is intended to be used
-   * only for types that have a numeric `length` property, such as strings or arrays. The
-   * `minLength` validator logic is also not invoked for values when their `length` property is 0
-   * (for example in case of an empty string or an empty array), to support optional controls. You
-   * can use the standard `required` validator if empty values should not be considered valid.
-   *
-   * @usageNotes
-   *
-   * ### Validate that the field has a minimum of 3 characters
-   *
-   * ```typescript
-   * const control = new FormControl('ng', Validators.minLength(3));
-   *
-   * console.log(control.errors); // {minlength: {requiredLength: 3, actualLength: 2}}
-   * ```
-   *
-   * ```html
-   * <input minlength="5">
-   * ```
-   *
-   * @returns A validator function that returns an error map with the
-   * `minlength` property if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static minLength(minLength) {
-    return minLengthValidator(minLength);
-  }
-  /**
-   * @description
-   * Validator that requires the length of the control's value to be less than or equal
-   * to the provided maximum length. This validator is also provided by default if you use the
-   * the HTML5 `maxlength` attribute. Note that the `maxLength` validator is intended to be used
-   * only for types that have a numeric `length` property, such as strings or arrays.
-   *
-   * @usageNotes
-   *
-   * ### Validate that the field has maximum of 5 characters
-   *
-   * ```typescript
-   * const control = new FormControl('Angular', Validators.maxLength(5));
-   *
-   * console.log(control.errors); // {maxlength: {requiredLength: 5, actualLength: 7}}
-   * ```
-   *
-   * ```html
-   * <input maxlength="5">
-   * ```
-   *
-   * @returns A validator function that returns an error map with the
-   * `maxlength` property if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static maxLength(maxLength) {
-    return maxLengthValidator(maxLength);
-  }
-  /**
-   * @description
-   * Validator that requires the control's value to match a regex pattern. This validator is also
-   * provided by default if you use the HTML5 `pattern` attribute.
-   *
-   * @usageNotes
-   *
-   * ### Validate that the field only contains letters or spaces
-   *
-   * ```typescript
-   * const control = new FormControl('1', Validators.pattern('[a-zA-Z ]*'));
-   *
-   * console.log(control.errors); // {pattern: {requiredPattern: '^[a-zA-Z ]*$', actualValue: '1'}}
-   * ```
-   *
-   * ```html
-   * <input pattern="[a-zA-Z ]*">
-   * ```
-   *
-   * ### Pattern matching with the global or sticky flag
-   *
-   * `RegExp` objects created with the `g` or `y` flags that are passed into `Validators.pattern`
-   * can produce different results on the same input when validations are run consecutively. This is
-   * due to how the behavior of `RegExp.prototype.test` is
-   * specified in [ECMA-262](https://tc39.es/ecma262/#sec-regexpbuiltinexec)
-   * (`RegExp` preserves the index of the last match when the global or sticky flag is used).
-   * Due to this behavior, it is recommended that when using
-   * `Validators.pattern` you **do not** pass in a `RegExp` object with either the global or sticky
-   * flag enabled.
-   *
-   * ```typescript
-   * // Not recommended (since the `g` flag is used)
-   * const controlOne = new FormControl('1', Validators.pattern(/foo/g));
-   *
-   * // Good
-   * const controlTwo = new FormControl('1', Validators.pattern(/foo/));
-   * ```
-   *
-   * @param pattern A regular expression to be used as is to test the values, or a string.
-   * If a string is passed, the `^` character is prepended and the `$` character is
-   * appended to the provided string (if not already present), and the resulting regular
-   * expression is used to test the values.
-   *
-   * @returns A validator function that returns an error map with the
-   * `pattern` property if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static pattern(pattern) {
-    return patternValidator(pattern);
-  }
-  /**
-   * @description
-   * Validator that performs no operation.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static nullValidator(control) {
-    return nullValidator(control);
-  }
-  static compose(validators) {
-    return compose(validators);
-  }
-  /**
-   * @description
-   * Compose multiple async validators into a single function that returns the union
-   * of the individual error objects for the provided control.
-   *
-   * @returns A validator function that returns an error map with the
-   * merged error objects of the async validators if the validation check fails, otherwise `null`.
-   *
-   * @see {@link updateValueAndValidity()}
-   *
-   */
-  static composeAsync(validators) {
-    return composeAsync(validators);
-  }
-};
 function minValidator(min) {
   return (control) => {
     if (isEmptyInputValue(control.value) || isEmptyInputValue(min)) {
@@ -1271,20 +1018,20 @@ function ngModelWarning(directiveName) {
   https://angular.io/api/forms/${directiveName === "formControl" ? "FormControlDirective" : "FormControlName"}#use-with-ngmodel
   `;
 }
-function describeKey(isFormGroup2, key) {
-  return isFormGroup2 ? `with name: '${key}'` : `at index: ${key}`;
+function describeKey(isFormGroup, key) {
+  return isFormGroup ? `with name: '${key}'` : `at index: ${key}`;
 }
-function noControlsError(isFormGroup2) {
+function noControlsError(isFormGroup) {
   return `
-    There are no form controls registered with this ${isFormGroup2 ? "group" : "array"} yet. If you're using ngModel,
+    There are no form controls registered with this ${isFormGroup ? "group" : "array"} yet. If you're using ngModel,
     you may want to check next tick (e.g. use setTimeout).
   `;
 }
-function missingControlError(isFormGroup2, key) {
-  return `Cannot find form control ${describeKey(isFormGroup2, key)}`;
+function missingControlError(isFormGroup, key) {
+  return `Cannot find form control ${describeKey(isFormGroup, key)}`;
 }
-function missingControlValueError(isFormGroup2, key) {
-  return `Must supply a value for form control ${describeKey(isFormGroup2, key)}`;
+function missingControlValueError(isFormGroup, key) {
+  return `Must supply a value for form control ${describeKey(isFormGroup, key)}`;
 }
 var VALID = "VALID";
 var INVALID = "INVALID";
@@ -2489,11 +2236,8 @@ function validateFormGroupControls(controls) {
     console.warn(`FormGroup keys cannot include \`.\`, please replace the keys for: ${invalidKeys.join(",")}.`);
   }
 }
-var UntypedFormGroup = FormGroup;
-var isFormGroup = (control) => control instanceof FormGroup;
 var FormRecord = class extends FormGroup {
 };
-var isFormRecord = (control) => control instanceof FormRecord;
 var CALL_SET_DISABLED_STATE = new InjectionToken("CallSetDisabledState", {
   providedIn: "root",
   factory: () => setDisabledStateDefault
@@ -3092,7 +2836,6 @@ var FormControl = class FormControl2 extends AbstractControl {
     }
   }
 };
-var UntypedFormControl = FormControl;
 var isFormControl = (control) => control instanceof FormControl;
 var _AbstractFormGroupDirective = class _AbstractFormGroupDirective extends ControlContainer {
   /** @nodoc */
@@ -5979,8 +5722,6 @@ var FormArray = class extends AbstractControl {
     return this.at(name) ?? null;
   }
 };
-var UntypedFormArray = FormArray;
-var isFormArray = (control) => control instanceof FormArray;
 function isAbstractControlOptions(options) {
   return !!options && (options.asyncValidators !== void 0 || options.validators !== void 0 || options.updateOn !== void 0);
 }
@@ -6222,7 +5963,7 @@ var UntypedFormBuilder = _UntypedFormBuilder;
     }]
   }], null, null);
 })();
-var VERSION = new Version("18.2.0");
+var VERSION = new Version("18.2.3");
 var _FormsModule = class _FormsModule {
   /**
    * @description
@@ -6308,78 +6049,429 @@ var ReactiveFormsModule = _ReactiveFormsModule;
     }]
   }], null, null);
 })();
+
+// ../../../../../node_modules/ng-zorro-antd/fesm2022/ng-zorro-antd-core-form.mjs
+function NzFormItemFeedbackIconComponent_Conditional_0_Template(rf, ctx) {
+  if (rf & 1) {
+    ɵɵelement(0, "span", 0);
+  }
+  if (rf & 2) {
+    const ctx_r0 = ɵɵnextContext();
+    ɵɵproperty("nzType", ctx_r0.iconType);
+  }
+}
+var _NzFormStatusService = class _NzFormStatusService {
+  constructor() {
+    this.formStatusChanges = new ReplaySubject(1);
+  }
+};
+_NzFormStatusService.ɵfac = function NzFormStatusService_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _NzFormStatusService)();
+};
+_NzFormStatusService.ɵprov = ɵɵdefineInjectable({
+  token: _NzFormStatusService,
+  factory: _NzFormStatusService.ɵfac
+});
+var NzFormStatusService = _NzFormStatusService;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NzFormStatusService, [{
+    type: Injectable
+  }], null, null);
+})();
+var _NzFormNoStatusService = class _NzFormNoStatusService {
+  constructor() {
+    this.noFormStatus = new BehaviorSubject(false);
+  }
+};
+_NzFormNoStatusService.ɵfac = function NzFormNoStatusService_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _NzFormNoStatusService)();
+};
+_NzFormNoStatusService.ɵprov = ɵɵdefineInjectable({
+  token: _NzFormNoStatusService,
+  factory: _NzFormNoStatusService.ɵfac
+});
+var NzFormNoStatusService = _NzFormNoStatusService;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NzFormNoStatusService, [{
+    type: Injectable
+  }], null, null);
+})();
+var iconTypeMap = {
+  error: "close-circle-fill",
+  validating: "loading",
+  success: "check-circle-fill",
+  warning: "exclamation-circle-fill"
+};
+var _NzFormItemFeedbackIconComponent = class _NzFormItemFeedbackIconComponent {
+  constructor(cdr) {
+    this.cdr = cdr;
+    this.status = "";
+    this.iconType = null;
+  }
+  ngOnChanges(_changes) {
+    this.updateIcon();
+  }
+  updateIcon() {
+    this.iconType = this.status ? iconTypeMap[this.status] : null;
+    this.cdr.markForCheck();
+  }
+};
+_NzFormItemFeedbackIconComponent.ɵfac = function NzFormItemFeedbackIconComponent_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _NzFormItemFeedbackIconComponent)(ɵɵdirectiveInject(ChangeDetectorRef));
+};
+_NzFormItemFeedbackIconComponent.ɵcmp = ɵɵdefineComponent({
+  type: _NzFormItemFeedbackIconComponent,
+  selectors: [["nz-form-item-feedback-icon"]],
+  hostAttrs: [1, "ant-form-item-feedback-icon"],
+  hostVars: 8,
+  hostBindings: function NzFormItemFeedbackIconComponent_HostBindings(rf, ctx) {
+    if (rf & 2) {
+      ɵɵclassProp("ant-form-item-feedback-icon-error", ctx.status === "error")("ant-form-item-feedback-icon-warning", ctx.status === "warning")("ant-form-item-feedback-icon-success", ctx.status === "success")("ant-form-item-feedback-icon-validating", ctx.status === "validating");
+    }
+  },
+  inputs: {
+    status: "status"
+  },
+  exportAs: ["nzFormFeedbackIcon"],
+  standalone: true,
+  features: [ɵɵNgOnChangesFeature, ɵɵStandaloneFeature],
+  decls: 1,
+  vars: 1,
+  consts: [["nz-icon", "", 3, "nzType"]],
+  template: function NzFormItemFeedbackIconComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      ɵɵtemplate(0, NzFormItemFeedbackIconComponent_Conditional_0_Template, 1, 1, "span", 0);
+    }
+    if (rf & 2) {
+      ɵɵconditional(ctx.iconType ? 0 : -1);
+    }
+  },
+  dependencies: [NzIconModule, NzIconDirective],
+  encapsulation: 2,
+  changeDetection: 0
+});
+var NzFormItemFeedbackIconComponent = _NzFormItemFeedbackIconComponent;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NzFormItemFeedbackIconComponent, [{
+    type: Component,
+    args: [{
+      selector: "nz-form-item-feedback-icon",
+      exportAs: "nzFormFeedbackIcon",
+      standalone: true,
+      imports: [NzIconModule],
+      preserveWhitespaces: false,
+      encapsulation: ViewEncapsulation$1.None,
+      changeDetection: ChangeDetectionStrategy.OnPush,
+      template: `
+    @if (iconType) {
+      <span nz-icon [nzType]="iconType"></span>
+    }
+  `,
+      host: {
+        class: "ant-form-item-feedback-icon",
+        "[class.ant-form-item-feedback-icon-error]": 'status==="error"',
+        "[class.ant-form-item-feedback-icon-warning]": 'status==="warning"',
+        "[class.ant-form-item-feedback-icon-success]": 'status==="success"',
+        "[class.ant-form-item-feedback-icon-validating]": 'status==="validating"'
+      }
+    }]
+  }], () => [{
+    type: ChangeDetectorRef
+  }], {
+    status: [{
+      type: Input
+    }]
+  });
+})();
+var _NzFormPatchModule = class _NzFormPatchModule {
+};
+_NzFormPatchModule.ɵfac = function NzFormPatchModule_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _NzFormPatchModule)();
+};
+_NzFormPatchModule.ɵmod = ɵɵdefineNgModule({
+  type: _NzFormPatchModule,
+  imports: [NzFormItemFeedbackIconComponent],
+  exports: [NzFormItemFeedbackIconComponent]
+});
+_NzFormPatchModule.ɵinj = ɵɵdefineInjector({
+  imports: [NzFormItemFeedbackIconComponent]
+});
+var NzFormPatchModule = _NzFormPatchModule;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NzFormPatchModule, [{
+    type: NgModule,
+    args: [{
+      imports: [NzFormItemFeedbackIconComponent],
+      exports: [NzFormItemFeedbackIconComponent]
+    }]
+  }], null, null);
+})();
+
+// ../../../../../node_modules/@angular/cdk/fesm2022/keycodes.mjs
+var BACKSPACE = 8;
+var TAB = 9;
+var ENTER = 13;
+var SHIFT = 16;
+var CONTROL = 17;
+var ALT = 18;
+var ESCAPE = 27;
+var SPACE = 32;
+var UP_ARROW = 38;
+var DOWN_ARROW = 40;
+var ZERO = 48;
+var NINE = 57;
+var A = 65;
+var Z = 90;
+var META = 91;
+var MAC_META = 224;
+function hasModifierKey(event, ...modifiers) {
+  if (modifiers.length) {
+    return modifiers.some((modifier) => event[modifier]);
+  }
+  return event.altKey || event.shiftKey || event.ctrlKey || event.metaKey;
+}
+
+// ../../../../../node_modules/@angular/cdk/fesm2022/layout.mjs
+var _LayoutModule = class _LayoutModule {
+};
+_LayoutModule.ɵfac = function LayoutModule_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _LayoutModule)();
+};
+_LayoutModule.ɵmod = ɵɵdefineNgModule({
+  type: _LayoutModule
+});
+_LayoutModule.ɵinj = ɵɵdefineInjector({});
+var LayoutModule = _LayoutModule;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(LayoutModule, [{
+    type: NgModule,
+    args: [{}]
+  }], null, null);
+})();
+var mediaQueriesForWebkitCompatibility = /* @__PURE__ */ new Set();
+var mediaQueryStyleNode;
+var _MediaMatcher = class _MediaMatcher {
+  constructor(_platform, _nonce) {
+    this._platform = _platform;
+    this._nonce = _nonce;
+    this._matchMedia = this._platform.isBrowser && window.matchMedia ? (
+      // matchMedia is bound to the window scope intentionally as it is an illegal invocation to
+      // call it from a different scope.
+      window.matchMedia.bind(window)
+    ) : noopMatchMedia;
+  }
+  /**
+   * Evaluates the given media query and returns the native MediaQueryList from which results
+   * can be retrieved.
+   * Confirms the layout engine will trigger for the selector query provided and returns the
+   * MediaQueryList for the query provided.
+   */
+  matchMedia(query) {
+    if (this._platform.WEBKIT || this._platform.BLINK) {
+      createEmptyStyleRule(query, this._nonce);
+    }
+    return this._matchMedia(query);
+  }
+};
+_MediaMatcher.ɵfac = function MediaMatcher_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _MediaMatcher)(ɵɵinject(Platform), ɵɵinject(CSP_NONCE, 8));
+};
+_MediaMatcher.ɵprov = ɵɵdefineInjectable({
+  token: _MediaMatcher,
+  factory: _MediaMatcher.ɵfac,
+  providedIn: "root"
+});
+var MediaMatcher = _MediaMatcher;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MediaMatcher, [{
+    type: Injectable,
+    args: [{
+      providedIn: "root"
+    }]
+  }], () => [{
+    type: Platform
+  }, {
+    type: void 0,
+    decorators: [{
+      type: Optional
+    }, {
+      type: Inject,
+      args: [CSP_NONCE]
+    }]
+  }], null);
+})();
+function createEmptyStyleRule(query, nonce) {
+  if (mediaQueriesForWebkitCompatibility.has(query)) {
+    return;
+  }
+  try {
+    if (!mediaQueryStyleNode) {
+      mediaQueryStyleNode = document.createElement("style");
+      if (nonce) {
+        mediaQueryStyleNode.setAttribute("nonce", nonce);
+      }
+      mediaQueryStyleNode.setAttribute("type", "text/css");
+      document.head.appendChild(mediaQueryStyleNode);
+    }
+    if (mediaQueryStyleNode.sheet) {
+      mediaQueryStyleNode.sheet.insertRule(`@media ${query} {body{ }}`, 0);
+      mediaQueriesForWebkitCompatibility.add(query);
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+function noopMatchMedia(query) {
+  return {
+    matches: query === "all" || query === "",
+    media: query,
+    addListener: () => {
+    },
+    removeListener: () => {
+    }
+  };
+}
+var _BreakpointObserver = class _BreakpointObserver {
+  constructor(_mediaMatcher, _zone) {
+    this._mediaMatcher = _mediaMatcher;
+    this._zone = _zone;
+    this._queries = /* @__PURE__ */ new Map();
+    this._destroySubject = new Subject();
+  }
+  /** Completes the active subject, signalling to all other observables to complete. */
+  ngOnDestroy() {
+    this._destroySubject.next();
+    this._destroySubject.complete();
+  }
+  /**
+   * Whether one or more media queries match the current viewport size.
+   * @param value One or more media queries to check.
+   * @returns Whether any of the media queries match.
+   */
+  isMatched(value) {
+    const queries = splitQueries(coerceArray(value));
+    return queries.some((mediaQuery) => this._registerQuery(mediaQuery).mql.matches);
+  }
+  /**
+   * Gets an observable of results for the given queries that will emit new results for any changes
+   * in matching of the given queries.
+   * @param value One or more media queries to check.
+   * @returns A stream of matches for the given queries.
+   */
+  observe(value) {
+    const queries = splitQueries(coerceArray(value));
+    const observables = queries.map((query) => this._registerQuery(query).observable);
+    let stateObservable = combineLatest(observables);
+    stateObservable = concat(stateObservable.pipe(take(1)), stateObservable.pipe(skip(1), debounceTime(0)));
+    return stateObservable.pipe(map((breakpointStates) => {
+      const response = {
+        matches: false,
+        breakpoints: {}
+      };
+      breakpointStates.forEach(({
+        matches,
+        query
+      }) => {
+        response.matches = response.matches || matches;
+        response.breakpoints[query] = matches;
+      });
+      return response;
+    }));
+  }
+  /** Registers a specific query to be listened for. */
+  _registerQuery(query) {
+    if (this._queries.has(query)) {
+      return this._queries.get(query);
+    }
+    const mql = this._mediaMatcher.matchMedia(query);
+    const queryObservable = new Observable((observer) => {
+      const handler = (e) => this._zone.run(() => observer.next(e));
+      mql.addListener(handler);
+      return () => {
+        mql.removeListener(handler);
+      };
+    }).pipe(startWith(mql), map(({
+      matches
+    }) => ({
+      query,
+      matches
+    })), takeUntil(this._destroySubject));
+    const output = {
+      observable: queryObservable,
+      mql
+    };
+    this._queries.set(query, output);
+    return output;
+  }
+};
+_BreakpointObserver.ɵfac = function BreakpointObserver_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _BreakpointObserver)(ɵɵinject(MediaMatcher), ɵɵinject(NgZone));
+};
+_BreakpointObserver.ɵprov = ɵɵdefineInjectable({
+  token: _BreakpointObserver,
+  factory: _BreakpointObserver.ɵfac,
+  providedIn: "root"
+});
+var BreakpointObserver = _BreakpointObserver;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(BreakpointObserver, [{
+    type: Injectable,
+    args: [{
+      providedIn: "root"
+    }]
+  }], () => [{
+    type: MediaMatcher
+  }, {
+    type: NgZone
+  }], null);
+})();
+function splitQueries(queries) {
+  return queries.map((query) => query.split(",")).reduce((a1, a2) => a1.concat(a2)).map((query) => query.trim());
+}
+
 export {
-  AbstractControl,
-  AbstractControlDirective,
-  AbstractFormGroupDirective,
-  COMPOSITION_BUFFER_MODE,
-  CheckboxControlValueAccessor,
-  CheckboxRequiredValidator,
-  ControlContainer,
-  ControlEvent,
-  DefaultValueAccessor,
-  EmailValidator,
-  FormArray,
-  FormArrayName,
-  FormBuilder,
-  FormControl,
-  FormControlDirective,
-  FormControlName,
-  FormGroup,
-  FormGroupDirective,
-  FormGroupName,
-  FormRecord,
-  FormResetEvent,
-  FormSubmittedEvent,
-  FormsModule,
-  MaxLengthValidator,
-  MaxValidator,
-  MinLengthValidator,
-  MinValidator,
-  NG_ASYNC_VALIDATORS,
-  NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
+  CheckboxControlValueAccessor,
+  COMPOSITION_BUFFER_MODE,
+  DefaultValueAccessor,
   NgControl,
   NgControlStatus,
-  NgControlStatusGroup,
-  NgForm,
+  AbstractControl,
   NgModel,
-  NgModelGroup,
-  NgSelectOption,
-  NonNullableFormBuilder,
-  NumberValueAccessor,
-  PatternValidator,
-  PristineChangeEvent,
-  RadioControlValueAccessor,
-  RangeValueAccessor,
-  ReactiveFormsModule,
-  RequiredValidator,
-  SelectControlValueAccessor,
-  SelectMultipleControlValueAccessor,
-  StatusChangeEvent,
-  TouchedChangeEvent,
-  UntypedFormArray,
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  VERSION,
-  Validators,
-  ValueChangeEvent,
-  isFormArray,
-  isFormControl,
-  isFormGroup,
-  isFormRecord,
-  ɵInternalFormsSharedModule,
-  ɵNgNoValidate,
-  ɵNgSelectMultipleOption
+  FormControlDirective,
+  FormControlName,
+  FormsModule,
+  NzFormStatusService,
+  NzFormNoStatusService,
+  NzFormItemFeedbackIconComponent,
+  NzFormPatchModule,
+  BACKSPACE,
+  TAB,
+  ENTER,
+  SHIFT,
+  CONTROL,
+  ALT,
+  ESCAPE,
+  SPACE,
+  UP_ARROW,
+  DOWN_ARROW,
+  ZERO,
+  NINE,
+  A,
+  Z,
+  META,
+  MAC_META,
+  hasModifierKey,
+  MediaMatcher,
+  BreakpointObserver
 };
 /*! Bundled license information:
 
 @angular/forms/fesm2022/forms.mjs:
   (**
-   * @license Angular v18.2.0
+   * @license Angular v18.2.3
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
-//# sourceMappingURL=@angular_forms.js.map
+//# sourceMappingURL=chunk-KYHKKAWK.js.map

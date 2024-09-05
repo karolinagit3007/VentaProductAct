@@ -1,0 +1,65 @@
+<form class="register-form">
+    <div class="form-item">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" required />
+      <div *ngIf="myForm.get('email').invalid && myForm.get('email').touched" class="error-message">
+        Ingrese su Email!
+      </div>
+    </div>
+  
+    <div class="form-item">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" formControlName="password" required />
+      <div *ngIf="myForm.get('password').invalid && myForm.get('password').touched" class="error-message">
+        Coloque su contraseña!
+      </div>
+    </div>
+  
+    <div class="form-item">
+      <label for="checkPassword">Confirmar Contraseña</label>
+      <input type="password" id="checkPassword" formControlName="checkPassword" required />
+      <div *ngIf="myForm.get('checkPassword').invalid && myForm.get('checkPassword').touched" class="error-message">
+        <div *ngIf="myForm.get('checkPassword').errors?.['required']">
+          PorFavor confirmar su contraseña!
+        </div>
+        <div *ngIf="myForm.get('checkPassword').errors?.['confirm']">
+          Two passwords that you entered are inconsistent!
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-item">
+      <label for="nickname">Apodo</label>
+      <input type="text" id="nickname" formControlName="nickname" required />
+      <div *ngIf="myForm.get('nickname').invalid && myForm.get('nickname').touched" class="error-message">
+        Ingrese su Apodo!
+      </div>
+    </div>
+  
+    <div class="form-item">
+      <label for="phoneNumber">Numero de Teléfono</label>
+      <div class="input-group">
+        <select formControlName="phoneNumberPrefix" class="phone-select">
+          <option value="+86">+593</option>
+          <option value="+87">+574</option>
+          <option value="+87">+87</option>
+        </select>
+        <input type="text" id="phoneNumber" formControlName="phoneNumber" required />
+      </div>
+      <div *ngIf="myForm.get('phoneNumber').invalid && myForm.get('phoneNumber').touched" class="error-message">
+        Por Favor ingrese su número de teléfono!
+      </div>
+    </div>
+  
+  
+    <div class="form-item register-area">
+      <label class="checkbox-label">
+        <input type="checkbox" formControlName="agree" /> I have read the <a href="#">agreement</a>
+      </label>
+    </div>
+  
+    <div class="form-item register-area">
+      <button class="register-button">Registrarse</button>
+    </div>
+  </form>
+  

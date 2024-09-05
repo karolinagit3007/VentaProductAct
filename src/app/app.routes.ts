@@ -10,6 +10,7 @@ import { permissionsGuard } from './guards/permissions.guard';
 import { CartFormComponent } from './pages/cart-form/cart-form.component';
 import { warningsGuard } from './guards/warnings.guard';
 import { NgModule } from '@angular/core';
+import { RegisterComponent } from './pages/register/register.component';
 
 export const routes: Routes =  [
     {path:'',redirectTo:'home', pathMatch:'full'},
@@ -17,6 +18,7 @@ export const routes: Routes =  [
     { path: 'products', component:ProductsComponent, canActivate:[permissionsGuard]},
     { path: 'products/:id', component:DetalleproductoComponent },
     { path: 'login', component:LoginComponent },
+    { path: 'register', component:RegisterComponent },
     { path: 'nosotros', component:NosotrosComponent },
     {path: 'producto/uno', component: ProductoUnoComponent, canDeactivate: [warningsGuard], canActivate:[permissionsGuard]},
     {path: 'cart-form', component: CartFormComponent},

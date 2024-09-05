@@ -5,7 +5,7 @@ import { warningsGuard } from './warnings.guard';
 
 describe('warningsGuard', () => {
   const executeGuard: CanDeactivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => warningsGuard(...guardParameters));
+   TestBed.runInInjectionContext(() => warningsGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
