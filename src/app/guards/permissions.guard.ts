@@ -14,5 +14,5 @@ export const permissionsGuard: CanActivateFn = (route, state) => {
   }
 
 
-  return true;
+  return usersService.getCurrentUser() !== null;
 };

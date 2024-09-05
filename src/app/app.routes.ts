@@ -11,13 +11,14 @@ import { CartFormComponent } from './pages/cart-form/cart-form.component';
 import { warningsGuard } from './guards/warnings.guard';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './pages/register/register.component';
+import { redirectUnauthorizedTo, canActivate } from '@angular/fire/auth-guard';
 
 export const routes: Routes =  [
     {path:'',redirectTo:'home', pathMatch:'full'},
     {path: 'home', component:HomeComponent},
-    { path: 'products', component:ProductsComponent, canActivate:[permissionsGuard]},
-    { path: 'products/:id', component:DetalleproductoComponent },
-    { path: 'login', component:LoginComponent },
+    { path: 'products', component:ProductsComponent},
+  { path: 'products/:id', component:DetalleproductoComponent, ...canActivate(() => redirectUnauthorizedTo(['/login'])) },
+    { path: 'login', component:LoginComponent, canDeactivate: [warningsGuard] },
     { path: 'register', component:RegisterComponent },
     { path: 'nosotros', component:NosotrosComponent },
     {path: 'producto/uno', component: ProductoUnoComponent, canDeactivate: [warningsGuard], canActivate:[permissionsGuard]},
