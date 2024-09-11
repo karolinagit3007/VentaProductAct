@@ -6,13 +6,19 @@ import {
   signOut, 
   User, 
   signInWithPopup,
-  GoogleAuthProvider
+  GoogleAuthProvider,
+  deleteUser
 } from '@angular/fire/auth'
 
 export interface LoginInfo{
   email: string;
   password: string;
+  nickname?: string;
+  photoURL?: string;
+  phoneNumber?: string;
+  role?: string;
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +45,11 @@ export class UsersService {
 
   getCurrentUser() : User | null{
     return this.auth.currentUser
+  }
+
+  deleteRegister(uid: string) : Promise<any> {
+    let user : User = { uid } as User;
+    return deleteUser(user);
   }
 
 
