@@ -1,62 +1,110 @@
-
-
-/* Estilos generales para el contenedor del formulario */
+/* Estilos generales */
 .container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  /* Estilos para el título del formulario */
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
-  }
-  
-  /* Estilos para los grupos de formulario */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  /* Estilos para las etiquetas del formulario */
-  .form-group label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  /* Estilos para los campos de entrada */
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-  }
-  
-  /* Estilos para el botón de envío */
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-  }
-  
-  /* Estilos para el botón de envío al pasar el ratón sobre él */
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
-  }
-  
-  /* Estilos para el botón de envío al recibir el foco */
-  .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-  }
-  
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #CDC2A5; /* Color de fondo suave */
+}
+
+/* Encabezado */
+h1 {
+  text-align: center;
+  color: #C96868; 
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+/* Estilos de los productos en el carrito */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #FEF9D9; /* Fondo blanco */
+}
+
+.cart-item-image {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 20px;
+  border: 2px solid #1f1e1e; /* Borde gris claro */
+  transition: transform 0.3s ease;
+}
+
+.cart-item-image:hover {
+  transform: scale(1.05);
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h5 {
+  margin: 0;
+  font-size: 20px;
+  color: #4a4a4a; /* Gris oscuro */
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #6c6c6c; /* Gris medio */
+}
+
+/* Estilos para el total */
+h4 {
+  text-align: right;
+  font-size: 22px;
+  color: #4a4a4a; /* Gris oscuro */
+  margin: 20px 0;
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #1f1e1e;
+}
+
+.btn-clear {
+  background-color: #f6c6c6; /* Rosa pastel */
+  color: #fff;
+}
+
+.btn-clear:hover {
+  background-color: #f29b9b; /* Rosa más intenso */
+  transform: scale(1.05);
+}
+
+.btn-pay {
+  background-color: #b4e0a4; /* Verde pastel */
+  color: #fff;
+  margin-left: 10px;
+}
+
+.btn-pay:hover {
+  background-color: #a0d96f; /* Verde más intenso */
+  transform: scale(1.05);
+}
+
+/* Estilos para el mensaje de carrito vacío */
+p {
+  text-align: center;
+  font-size: 18px;
+  color: #888; /* Gris claro */
+  font-style: italic;
+  margin-top: 50px;
+}

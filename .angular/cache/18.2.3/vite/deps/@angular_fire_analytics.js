@@ -2,7 +2,12 @@ import {
   ActivationEnd,
   Router,
   ɵEmptyOutletComponent
-} from "./chunk-MNEM662Q.js";
+} from "./chunk-LAOONNWF.js";
+import {
+  Title
+} from "./chunk-7YHDNTKF.js";
+import "./chunk-CGN35EJV.js";
+import "./chunk-BNTKIM6S.js";
 import {
   Auth,
   authState
@@ -33,10 +38,6 @@ import {
   ɵisSupportedError,
   ɵzoneWrap
 } from "./chunk-HGS6YJ6N.js";
-import {
-  Title
-} from "./chunk-ALZRYQIX.js";
-import "./chunk-BNTKIM6S.js";
 import {
   APP_INITIALIZER,
   ComponentFactoryResolver$1,

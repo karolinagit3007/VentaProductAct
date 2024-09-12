@@ -23,7 +23,7 @@ export const routes: Routes =  [
     { path: 'nosotros', component:NosotrosComponent },
     {path: 'producto/uno', component: ProductoUnoComponent, canDeactivate: [warningsGuard], canActivate:[permissionsGuard]},
     {path: 'cart-form', component: CartFormComponent},
-    
+
   ];
 
   @NgModule({

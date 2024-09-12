@@ -95,3 +95,29 @@
 .btn-primary:focus, .btn-primary:active {
     box-shadow: none; 
 }
+
+
+.shopping-cart-icon {
+    position: absolute; /* Cambiado de fixed a absolute */
+    top: 80px;
+    right: 10px;
+  }
+  
+  .btn-cart {
+    background-color: #222a97;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  .btn-cart:hover {
+    background-color: #1a1e7e;
+  }
+  
+  .btn-cart i {
+    font-size: 24px;
+  }
+  

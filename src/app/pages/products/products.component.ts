@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
+
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -16,9 +17,10 @@ export class ProductsComponent implements OnInit {
   constructor(private productService:ProductService){}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(productList =>{
+    this.productService.getProducts().subscribe(productList => {
+      console.log('Products fetched:', productList);  // Añade esta línea para verificar los datos en la consola
       this.products = productList;
-    })
+    });
   }
 
 }
