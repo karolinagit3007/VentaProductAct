@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
+import { Router } from '@angular/router'; // Importa Router
 
 @Component({
   selector: 'app-cart-form',
@@ -13,7 +14,7 @@ export class CartFormComponent implements OnInit {
   cartItems: any[] = [];
   totalPrice: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {} // Inyecta Router
 
   ngOnInit(): void {
     // Obtener los elementos del carrito al inicializar el componente
@@ -42,4 +43,9 @@ export class CartFormComponent implements OnInit {
   clearCart(): void {
     this.cartService.clearCart();
   }
+
+  goToProducts(): void {
+    this.router.navigate(['/products']); // Redirige a la página de productos
+  }
+ 
 }

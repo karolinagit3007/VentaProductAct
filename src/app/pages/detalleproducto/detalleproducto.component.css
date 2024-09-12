@@ -121,3 +121,16 @@
     font-size: 24px;
   }
   
+  .btn-secondary {
+    background-color: #7facd3;
+    color: #fff;
+    border-color: #7facd3;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  /* Puedes ajustar estos estilos según tus necesidades */
+  

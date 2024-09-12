@@ -1,7 +1,7 @@
-
-
-<!-- Botón para añadir el producto al carrito -->
+<!-- Botón para regresar a la página anterior -->
 <div class="container mt-5">
+  <button class="btn btn-secondary mb-4" (click)="goBack()">Regresar</button>
+
   <div *ngIf="product" class="product-card">
     <div class="row">
       <div class="col-md-6">
@@ -21,11 +21,10 @@
   </div>
 </div>
 
-
+<!-- Icono del carrito de compras -->
 <div class="shopping-cart-icon">
   <button class="btn btn-cart" (click)="goToCart()">
     <i class="fas fa-shopping-cart"></i>
-    
     <span *ngIf="cartItemsCount > 0" class="cart-count">{{ cartItemsCount }}</span>
   </button>
 </div>
