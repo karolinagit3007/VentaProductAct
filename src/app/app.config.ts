@@ -7,14 +7,13 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { provideHttpClient } from '@angular/common/http';  // Agrega esta línea
-
+import { provideHttpClient } from '@angular/common/http';  
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(),  // Agrega esta línea
+    provideHttpClient(),  
     provideFirebaseApp(() =>
       initializeApp({
         projectId: "web-pokemon-8e11c",

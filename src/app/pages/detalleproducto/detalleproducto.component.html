@@ -21,11 +21,11 @@
   </div>
 </div>
 
-<!-- Botón del carrito de compras en la esquina derecha -->
+
 <div class="shopping-cart-icon">
   <button class="btn btn-cart" (click)="goToCart()">
     <i class="fas fa-shopping-cart"></i>
-    <!-- Muestra el número de productos en el carrito si es mayor que 0 -->
+    
     <span *ngIf="cartItemsCount > 0" class="cart-count">{{ cartItemsCount }}</span>
   </button>
 </div>

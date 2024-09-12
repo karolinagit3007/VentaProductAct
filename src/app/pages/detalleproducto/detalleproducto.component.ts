@@ -13,12 +13,12 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class DetalleproductoComponent implements OnInit {
   product: any;
-  cartItemsCount = 0; // Inicializamos el contador de productos en el carrito
+  cartItemsCount = 0; 
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private cartService: CartService,  // Inyectamos el servicio de carrito
+    private cartService: CartService, 
     private router: Router
   ) {}
 
@@ -28,7 +28,7 @@ export class DetalleproductoComponent implements OnInit {
       this.product = product;
     });
 
-    // Nos suscribimos a los cambios en el carrito para actualizar el contador
+    
     this.cartService.cart$.subscribe(items => {
       this.cartItemsCount = items.length;  // Actualizamos el contador
     });
@@ -36,10 +36,10 @@ export class DetalleproductoComponent implements OnInit {
 
   // Método para añadir producto al carrito
   addToCart() {
-    this.cartService.addToCart(this.product); // Añade el producto al carrito
+    this.cartService.addToCart(this.product); 
   }
 
-  // Método para redirigir al carrito
+  
   goToCart() {
     this.router.navigate(['/cart-form']);  // Redirige a la página del carrito
   }

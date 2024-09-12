@@ -18,11 +18,11 @@ export class AppComponent implements OnInit  {
 
   ngOnInit(): void {
     this.cartService.cart$.subscribe(items => {
-      this.cartItemsCount = items.length;  // Actualizamos el contador con la cantidad de productos en el carrito
+      this.cartItemsCount = items.length; 
     });
   }
 
-  // Método para redirigir al formulario del carrito
+  
   goToCart() {
     this.router.navigate(['/cart-form']);  // Redirige a la página del carrito
   }
