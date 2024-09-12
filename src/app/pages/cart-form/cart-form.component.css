@@ -76,27 +76,35 @@ h4 {
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  background-color: #1f1e1e;
 }
 
-.btn-clear {
-  background-color: #f6c6c6; /* Rosa pastel */
+.btn-primary {
+  background-color: #1f1e1e; /* Gris oscuro */
   color: #fff;
 }
 
-.btn-clear:hover {
-  background-color: #f29b9b; /* Rosa más intenso */
+.btn-primary:hover {
+  background-color: #333; /* Gris más oscuro */
   transform: scale(1.05);
 }
 
-.btn-pay {
-  background-color: #b4e0a4; /* Verde pastel */
+.btn-warning {
+  background-color: #f0ad4e; /* Amarillo anaranjado */
   color: #fff;
-  margin-left: 10px;
 }
 
-.btn-pay:hover {
-  background-color: #a0d96f; /* Verde más intenso */
+.btn-warning:hover {
+  background-color: #ec971f; /* Naranja más intenso */
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background-color: #d9534f; /* Rojo */
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c; /* Rojo más oscuro */
   transform: scale(1.05);
 }
 

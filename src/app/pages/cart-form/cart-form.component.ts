@@ -23,12 +23,22 @@ export class CartFormComponent implements OnInit {
     });
   }
 
-  // Método para calcular el precio total del carrito
   calculateTotalPrice(): void {
-    this.totalPrice = this.cartItems.reduce((total, item) => total + item.price, 0);
+    this.totalPrice = this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
-  // Método para vaciar el carrito (opcional)
+  increaseQuantity(productoId: string): void {
+    this.cartService.updateQuantity(productoId, 1);
+  }
+
+  decreaseQuantity(productoId: string): void {
+    this.cartService.updateQuantity(productoId, -1);
+  }
+
+  removeFromCarrito(productoId: string): void {
+    this.cartService.removeFromCart(productoId);
+  }
+
   clearCart(): void {
     this.cartService.clearCart();
   }

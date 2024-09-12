@@ -3,7 +3,6 @@ import {
 } from "./chunk-LAOONNWF.js";
 import "./chunk-7YHDNTKF.js";
 import "./chunk-CGN35EJV.js";
-import "./chunk-BNTKIM6S.js";
 import {
   Auth,
   user
@@ -12,6 +11,7 @@ import {
   VERSION,
   registerVersion
 } from "./chunk-HGS6YJ6N.js";
+import "./chunk-BNTKIM6S.js";
 import {
   Injectable,
   NgModule,
