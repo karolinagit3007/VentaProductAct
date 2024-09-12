@@ -1,8 +1,6 @@
 import {
   Router
 } from "./chunk-MNEM662Q.js";
-import "./chunk-ALZRYQIX.js";
-import "./chunk-BNTKIM6S.js";
 import {
   Auth,
   user
@@ -11,6 +9,8 @@ import {
   VERSION,
   registerVersion
 } from "./chunk-HGS6YJ6N.js";
+import "./chunk-ALZRYQIX.js";
+import "./chunk-BNTKIM6S.js";
 import {
   Injectable,
   NgModule,

@@ -13,7 +13,6 @@ export class ProductService {
     { id: 3, name: 'Vestidos', description: 'Material: 80% poliéster, 20% elastano. Fit: Entallado. Colores: Rojo, Azul marino, Verde esmeralda. Tallas: XS-XL.', price: 200, image: 'imagenes/productoTres.png'}
   ];
 
-
   constructor() { }
 
   getProducts(): Observable<any>{

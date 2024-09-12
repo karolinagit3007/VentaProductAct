@@ -1,4 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="onClickRegister()">
+  <div class="form-header">
+    <img src="https://e7.pngegg.com/pngimages/146/551/png-clipart-user-login-mobile-phones-password-user-miscellaneous-blue.png" alt="Icono de Usuario" class="user-icon" />
+    <h2>Registrarse como nuevo usuario</h2>
+  </div>
+
   <div>
     <label for="email">Email:</label>
     <input id="email" formControlName="email" type="email" />
@@ -46,6 +51,7 @@
     <input id="photoURL" formControlName="photoURL" type="text" />
   </div>
 
-  <button type="submit" (click)="onClickRegister()" [disabled]="form.invalid">Registrar</button>
+  <button type="submit" [disabled]="form.invalid">Registrarme</button>
+  <br><br>
   <button type="button" (click)="onClickRegisterWithGoogle()">Registrar con Google</button>
 </form>
